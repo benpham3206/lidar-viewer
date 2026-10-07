@@ -1,0 +1,32 @@
+{
+  "name": "depth-sensor-hub",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "build": "tsc --noEmit && vite build",
+    "dev": "tsx hub/src/server.ts",
+    "dev:web": "vite --host 0.0.0.0",
+    "dev:hub": "tsx hub/src/server.ts",
+    "test": "vitest run --root .",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "three": "latest",
+    "ws": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@types/three": "latest",
+    "@types/ws": "latest",
+    "typescript": "latest",
+    "tsx": "latest",
+    "vite": "latest",
+    "vitest": "latest"
+  }
+}

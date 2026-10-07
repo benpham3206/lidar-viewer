@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleDisplayName</key>
+	<string>Depth Bridge</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Depth Bridge needs the camera to stream synchronized RGB and depth frames.</string>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>Depth Bridge sends depth frames to your local web hub.</string>
+	<key>NSMotionUsageDescription</key>
+	<string>Depth Bridge can attach device motion to captured frames.</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsLocalNetworking</key>
+		<true/>
+	</dict>
+</dict>
+</plist>
