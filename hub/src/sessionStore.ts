@@ -44,8 +44,11 @@ export class SessionStore {
   public stop(sessionID: string): SessionManifest {
     const active = this.requireActive(sessionID);
     active.stoppedAt = new Date().toISOString();
-    this.writeManifest(active);
-    this.active = null;
+    try {
+      this.writeManifest(active);
+    } finally {
+      this.active = null;
+    }
     return cloneManifest(active);
   }
 
