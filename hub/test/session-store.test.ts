@@ -1,4 +1,4 @@
-import { mkdtempSync, readFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, readFileSync, unlinkSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
@@ -20,6 +20,18 @@ describe("SessionStore", () => {
     expect(stopped.framesStored).toBe(1);
     const manifest = JSON.parse(readFileSync(join(root, started.sessionID, "manifest.json"), "utf8")) as { framesStored: number };
     expect(manifest.framesStored).toBe(1);
+  });
+
+  it("clears the active session when the stop manifest cannot be written", () => {
+    const root = mkdtempSync(join(tmpdir(), "depth-hub-"));
+    const store = new SessionStore(root);
+    const started = store.start();
+    const manifestPath = join(root, started.sessionID, "manifest.json");
+    unlinkSync(manifestPath);
+    mkdirSync(manifestPath);
+
+    expect(() => store.stop(started.sessionID)).toThrow();
+    expect(store.current()).toBeNull();
   });
 
   it("keeps the highest cumulative drop count", () => {
